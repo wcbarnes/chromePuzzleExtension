@@ -3,14 +3,12 @@
 
 html2canvas(document.body).then(function(canvas) {
 
-	$("body").children().css("display", "none");
-	$("*").css("margin", "0");
-	$("*").css("padding", "0");
+	$("body").children().hide();
 	$("body").css("position", "relative");
 
 	let imagePieces = [];
-	let columnsToCut = 10;
-	let rowsToCut = 10;
+	let columnsToCut = 3;
+	let rowsToCut = 3;
 
 
 	let pieceWidth = canvas.width/columnsToCut;
@@ -27,6 +25,10 @@ html2canvas(document.body).then(function(canvas) {
 	}
 
 	const imageArray = imagePieces;
+	let originalPngStr = "";
+	for (let i = 0; i < imageArray.length; i++) {
+		originalPngStr += JSON.stringify(imageArray[i]);
+	}
 
 	for (let i = imagePieces.length-1; i > 0; i--) {
 		let j = Math.floor(Math.random() * (i + 1));
@@ -37,10 +39,9 @@ html2canvas(document.body).then(function(canvas) {
 
 	for (let i = 0; i < rowsToCut * columnsToCut; i++) {
 
-		$("body").append('<img style="cursor:move" draggable="true" display="inline-block" width="10%" src="' + imagePieces[i] + '">');
+		$("body").append('<img class="puzzle" style="cursor:move" draggable="true" display="inline-block" width="33.33333333%" src="' + imagePieces[i] + '">');
 	}
 
-	//for ()
 
 
 	let dragSrcEl = null;
@@ -66,8 +67,17 @@ function handleDrop(e) {
 	}
 	if (dragSrcEl != this) {
 		dragSrcEl.src = this.src;
-		console.log(this.src)
 		this.src = e.dataTransfer.getData('image/png');
+	}
+	let currentPngStr = "";
+	let pieces = $('.puzzle').toArray();
+	console.log(pieces)
+	for (let i = 0; i < pieces.length; i++) {
+		currentPngStr += JSON.stringify(pieces[i].src);
+	}
+	if (currentPngStr === originalPngStr) {
+		$(".puzzle").remove();
+		$("body").children().show();
 	}
 	return false;
 }
@@ -84,50 +94,6 @@ let images = $('img').toArray();
 
 
 });
-
-
-
-
-
-
-//randomize positions
-//drag and drop
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
