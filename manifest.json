@@ -5,6 +5,7 @@
 	"description": "Slices the pages into images and randomizes their location and the page will only become available when pieced together",
 	"background_page": "background.html",
 	"browser_action": {
+		"default_icon": "icon.png",
 		"name": "Web Scrambler"
 	},
 	"content_scripts": [{
