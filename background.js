@@ -1,6 +1,3 @@
-
-
-
 html2canvas(document.body).then(function(canvas) {
 	alert("As a security precaution, please piece the website back together before attempting to use it!");
 	$("body").children().hide();
@@ -9,7 +6,6 @@ html2canvas(document.body).then(function(canvas) {
 	let imagePieces = [];
 	let columnsToCut = 3;
 	let rowsToCut = 3;
-
 
 	let pieceWidth = canvas.width/columnsToCut;
 	let pieceHeight = canvas.height/rowsToCut;
@@ -41,8 +37,6 @@ html2canvas(document.body).then(function(canvas) {
 
 		$("body").append('<img class="puzzle" style="cursor:move" draggable="true" display="inline-block" width="33.33333333%" src="' + imagePieces[i] + '">');
 	}
-
-
 
 	let dragSrcEl = null;
 
@@ -85,16 +79,9 @@ function handleDrop(e) {
 
 let images = $('img').toArray();
 
-
 [].forEach.call(images, function(image) {
 	image.addEventListener('dragstart', handleDragStart, false);
 	image.addEventListener('drop', handleDrop, false);
 	image.addEventListener('dragover', handleDragOver, false);
 });
-
-
-
 });
-
-
-
