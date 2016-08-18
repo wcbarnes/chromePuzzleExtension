@@ -1,0 +1,15 @@
+{
+	"manifest_version": 2,
+	"name": "Web Scrambler",
+	"version": "1",
+	"description": "Slices the pages into images and randomizes their location and the page will only become available when pieced together",
+	"background_page": "background.html",
+	"browser_action": {
+		"name": "Web Scrambler"
+	},
+	"content_scripts": [{
+		"js": ["jquery-3.1.0.min.js", "html2canvas.js", "html2canvas.svg.js", "background.js"],
+		"matches": ["http://*/*", "https://*/*", "<all_urls>"]
+		}],
+	"permissions": ["tabs", "<all_urls>", "activeTab", "desktopCapture", "tabCapture"]
+}
