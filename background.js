@@ -2,7 +2,7 @@
 
 
 html2canvas(document.body).then(function(canvas) {
-
+	alert("As a security precaution, please piece the website back together before attempting to use it!");
 	$("body").children().hide();
 	$("body").css("position", "relative");
 
@@ -78,6 +78,7 @@ function handleDrop(e) {
 	if (currentPngStr === originalPngStr) {
 		$(".puzzle").remove();
 		$("body").children().show();
+		alert("You can now access this Website!");
 	}
 	return false;
 }
