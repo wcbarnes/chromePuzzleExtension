@@ -6,10 +6,11 @@
 	"background_page": "background.html",
 	"browser_action": {
 		"default_icon": "icon.png",
-		"name": "Web Scrambler"
+		"name": "Web Scrambler",
+		"default_popup": "background.html"
 	},
 	"content_scripts": [{
-		"js": ["jquery-3.1.0.min.js", "html2canvas.js", "html2canvas.svg.js", "background.js"],
+		"js": ["jquery-3.1.0.min.js", "html2canvas.js", "html2canvas.svg.js"],
 		"matches": ["http://*/*", "https://*/*", "<all_urls>"]
 		}],
 	"permissions": ["tabs", "<all_urls>", "activeTab", "desktopCapture", "tabCapture"]
